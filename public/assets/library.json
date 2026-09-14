@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "note": "场景=结构优先线稿（通义万相 wanx2.0-t2i-turbo）；立绘=刘看山 costume（参考帧驱动）。keywords 用于关键词打分匹配。",
+  "scenes": [
+    { "id": "classroom", "file": "scene-classroom.png", "label": "教室",
+      "keywords": ["教室", "课桌", "黑板", "讲台", "考场", "上课", "期末", "考试", "自习", "学校", "班级", "校园"] },
+    { "id": "dorm", "file": "scene-dorm.png", "label": "宿舍",
+      "keywords": ["宿舍", "寝室", "室友", "上床下桌", "床铺", "住宿", "公寓", "宿管", "四人寝"] },
+    { "id": "office", "file": "scene-office.png", "label": "办公室",
+      "keywords": ["办公室", "公司", "工位", "职场", "上班", "加班", "同事", "老板", "主管", "领导", "会议", "离职", "简历", "面试"] },
+    { "id": "livingroom", "file": "scene-livingroom.png", "label": "客厅",
+      "keywords": ["客厅", "家里", "家中", "沙发", "父母", "爸妈", "我妈", "妈妈", "家庭", "饭桌", "亲戚", "过年", "离婚", "结婚", "厨房", "行李"] },
+    { "id": "street", "file": "scene-street.png", "label": "街道",
+      "keywords": ["街道", "路上", "马路", "街头", "地铁", "公交", "城市", "外面", "走路", "路口", "斑马线", "夜市", "小吃街", "伞"] },
+    { "id": "rooftop", "file": "scene-rooftop.png", "label": "天台",
+      "keywords": ["天台", "楼顶", "阳台", "屋顶", "高处", "顶楼", "跳", "吹风", "夜景"] },
+    { "id": "hospital", "file": "scene-hospital.png", "label": "病房",
+      "keywords": ["医院", "病房", "医生", "大夫", "护士", "挂号", "门诊", "手术", "陪床", "生病", "住院", "急诊", "体检"] },
+    { "id": "cafe", "file": "scene-cafe.png", "label": "咖啡店",
+      "keywords": ["咖啡", "咖啡馆", "咖啡店", "奶茶店", "小馆", "店门口"] }
+  ],
+  "chars": [
+    { "id": "student", "file": "char-student.png", "label": "同学", "icon": "🎒",
+      "keywords": ["同学", "室友", "同桌", "学生", "学长", "学弟", "学姐", "舍友", "班", "少年", "青年"] },
+    { "id": "goodstudent", "file": "char-goodstudent.png", "label": "好学生", "icon": "📚",
+      "keywords": ["班长", "学霸", "课代表", "第一名", "好学生", "优等生", "学习委员"] },
+    { "id": "slacker", "file": "char-slacker.png", "label": "吊儿郎当", "icon": "🎧",
+      "keywords": ["吊儿郎当", "混子", "不羁", "叛逆", "懒散", "学渣", "坏学生", "小混混"] },
+    { "id": "teacher", "file": "char-teacher.png", "label": "老师", "icon": "📖",
+      "keywords": ["老师", "教师", "教授", "班主任", "辅导员", "导师", "校长", "监考"] },
+    { "id": "doctor", "file": "char-doctor.png", "label": "医生", "icon": "🩺",
+      "keywords": ["医生", "大夫", "护士", "医院", "门诊", "诊断", "病人", "挂号"] },
+    { "id": "coder", "file": "char-coder.png", "label": "程序员", "icon": "💻",
+      "keywords": ["程序员", "代码", "开发", "技术", "后端", "前端", "互联网", "算法", "bug", "加班写代码"] },
+    { "id": "barista", "file": "char-barista.png", "label": "店员", "icon": "☕",
+      "keywords": ["咖啡", "店员", "服务员", "奶茶", "收银", "奶茶店", "咖啡店", "老板娘"] },
+    { "id": "officeworker", "file": "char-officeworker.png", "label": "同事", "icon": "💼",
+      "keywords": ["主管", "老板", "经理", "同事", "领导", "客户", "hr", "人力", "上司", "下属", "职场"] }
+  ],
+  "fallback": { "scene": "livingroom", "char": "student" }
+}
