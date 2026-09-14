@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>假如当时 · 本回答仅供参考</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ============ 首页 ============ -->
+  <section id="home" class="screen active">
+    <div class="glow"></div>
+    <div class="home-inner">
+
+      <div class="feed-card" id="feedCard">
+        <div class="fc-top">
+          <span class="fc-avatar">知</span>
+          <div class="fc-meta"><b>知乎</b><span>推荐 · 凌晨 1:24</span></div>
+          <span class="fc-more">···</span>
+        </div>
+        <div class="fc-title" id="fcTitle">发现室友考试作弊，你该不该举报他？</div>
+        <div class="fc-sub">1,243 个回答 · 8.7 万人关注</div>
+        <div class="fc-actions">
+          <span class="fc-act on">已收藏</span><span class="fc-act">写回答</span><span class="fc-act">邀请</span>
+        </div>
+        <div class="fc-hint" id="fcHint">↑ 点进这个问题</div>
+      </div>
+
+      <header class="hero">
+        <div class="brand"><span class="dot"></span>知乎 · 互动叙事</div>
+        <h1 class="title">假如当时</h1>
+        <p class="sub">刷到一个问题，然后走进这个问题。<br>你的选择会被写成一条回答。</p>
+      </header>
+
+      <div class="sec-head"><span>本周剧场</span><i></i><button class="refresh-btn" data-target="stories" title="刷新故事列表">↻</button></div>
+      <div class="story-list" id="storyList"></div>
+
+      <div class="sec-head"><span>今日热榜剧场</span><i></i><button class="refresh-btn" data-target="hot" title="刷新热榜（拉取知乎实时数据）">↻</button></div>
+      <div class="hot-box" id="hotList"></div>
+
+      <div class="sec-head"><span>任意问题 · 现场生成</span><i></i></div>
+      <div class="gen-box">
+        <textarea id="genInput" rows="2" placeholder="粘贴任意知乎问题或一段文字…"></textarea>
+        <button id="genBtn" class="primary">生成互动剧</button>
+        <div id="genStatus" class="gen-status"></div>
+      </div>
+
+      <div id="gallery" class="gallery"></div>
+      <div class="foot">一个人的黑客松 · 精修故事 + 热榜改编 + 任意问题现场生成<br>
+        场景插图由 AI（通义万相）实时绘制 · 角色为知乎吉祥物刘看山的简笔演绎 · 均为 AI 生成，非手绘</div>
+    </div>
+  </section>
+
+  <!-- ============ 游戏页（galgame 单视图：场景/立绘/对话框全部叠在同一画面） ============ -->
+  <section id="play" class="screen">
+    <div id="stage" class="stage">
+      <div id="bg" class="bg"></div>
+      <div id="bgNext" class="bg-next"></div>
+      <div class="vignette"></div>
+
+      <!-- 聊天记录场景：微信式手机界面（DOM 绘制，头像用刘看山立绘） -->
+      <div id="chatLayer" class="chat-layer">
+        <div class="phone">
+          <div class="chat-head"><img id="chatAvatar" alt=""><span id="chatName"></span></div>
+          <div class="chat-body" id="chatBody"></div>
+        </div>
+      </div>
+
+      <div id="char" class="char"><img id="charImg" alt=""></div>
+      <div id="sceneTag" class="scene-tag"></div>
+      <div id="sceneBadge" class="scene-badge"></div>
+      <div id="transition" class="transition"></div>
+
+      <!-- 对话框：悬浮在画面底部的半透明层，名牌突出其上沿 -->
+      <div class="panel">
+        <div id="nameplate" class="nameplate">
+          <span class="np-icon" id="npIcon"></span>
+          <span class="np-name" id="npName"></span>
+          <span class="np-role" id="npRole"></span>
+        </div>
+        <div id="name" class="name"></div>
+        <div id="text" class="text"></div>
+        <div id="echo" class="echo"></div>
+        <div id="choices" class="choices"></div>
+        <div id="talk" class="talk"></div>
+        <div class="bar">
+          <span id="progress"></span>
+          <button id="next" class="next">继续 ▾</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 结局页 ============ -->
+  <section id="ending" class="screen">
+    <div class="ending-inner">
+      <div class="ending-name" id="endName"></div>
+      <div class="card-wrap"><canvas id="card" width="750" height="1180"></canvas></div>
+      <div class="ending-text" id="endText"></div>
+      <div class="ending-actions">
+        <button id="saveCard" class="primary">保存结局卡</button>
+        <div class="row">
+          <button id="again" class="ghost">再玩一次</button>
+          <button id="backHome" class="ghost">换一个问题</button>
+        </div>
+      </div>
+      <div id="galleryEnd" class="gallery"></div>
+    </div>
+  </section>
+
+  <!-- ============ 观点对撞页（议论型热榜：正方看山 vs 反方看山，你来当裁判） ============ -->
+  <section id="debate" class="screen">
+    <div class="db-inner">
+      <div class="db-top">
+        <button id="dbBackHome" class="db-back">‹ 返回热榜</button>
+        <span class="db-kicker">观点对撞 · 你来当裁判</span>
+      </div>
+      <div class="db-q" id="dbQ"></div>
+      <div class="db-ring">
+        <div class="db-fighter pro">
+          <img id="dbProFace" alt=""><div class="db-fname" id="dbProName"></div>
+          <div class="db-ftag pro">正方</div>
+        </div>
+        <div class="db-vs">VS</div>
+        <div class="db-fighter con">
+          <img id="dbConFace" alt=""><div class="db-fname" id="dbConName"></div>
+          <div class="db-ftag con">反方</div>
+        </div>
+      </div>
+      <div class="db-chat" id="dbChat"></div>
+      <div class="db-pick" id="dbPick"></div>
+    </div>
+  </section>
+
+</div>
+<script src="/game.js"></script>
+</body>
+</html>
