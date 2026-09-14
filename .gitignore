@@ -1,0 +1,31 @@
+# ===== 密钥：绝不提交到公开仓库 =====
+*.local.txt
+*.key
+*.secret
+.env
+.env.*
+!.env.example
+_secrets/
+_runtime/
+api_key.local.txt
+llm_key.txt
+llm_key.local.txt
+zhihu_key.local.txt
+
+# ===== 旧副本 / 构建脚本（非核心）=====
+game-withkey/
+scripts/
+build-offline.py
+export_stories.py
+新的看山立绘/
+
+# ===== 大资源（非核心代码，运行时按需自备；见 README）=====
+public/assets/*.png
+public/assets/*.jpg
+public/assets/*.jpeg
+public/assets/gen/
+node_modules/
+
+# ===== 运行期自动生成的缓存 =====
+data/cache.json
+data/hot.json
